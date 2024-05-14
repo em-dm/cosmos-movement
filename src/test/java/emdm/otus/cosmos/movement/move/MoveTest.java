@@ -1,5 +1,6 @@
 package emdm.otus.cosmos.movement.move;
 
+import emdm.otus.cosmos.movement.commands.commands.MoveCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,20 @@ class MoveTest {
         when(movable.getVelocity()).thenReturn(START_VELOCITY);
 
         new Move(movable).execute();
+
+        Mockito.verify(movable).setPosition(argumentCaptor.capture());
+        Vector actualPosition = argumentCaptor.getValue();
+
+        assertEquals(EXPECTED_POSITION, actualPosition);
+    }
+
+    @Test
+    @DisplayName("Движение меняет положение объекта")
+    void moveCommandTest() {
+        when(movable.getPosition()).thenReturn(START_POSITION);
+        when(movable.getVelocity()).thenReturn(START_VELOCITY);
+
+        new MoveCommand(movable).execute();
 
         Mockito.verify(movable).setPosition(argumentCaptor.capture());
         Vector actualPosition = argumentCaptor.getValue();
