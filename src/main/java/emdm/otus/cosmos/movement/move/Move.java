@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Move {
-    Movable movable;
+    protected Movable movable;
 
     public void execute() {
         movable.setPosition(Vector.plus(

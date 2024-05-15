@@ -1,5 +1,6 @@
 package emdm.otus.cosmos.movement.rotate;
 
+import emdm.otus.cosmos.movement.commands.commands.RotateCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,20 @@ class RotateTest {
         when(rotable.getAngularVelocity()).thenReturn(START_ANGULAR_VELOCITY);
 
         new Rotate(rotable).execute();
+
+        Mockito.verify(rotable).setDirection(argumentCaptor.capture());
+        Direction actualDirection = argumentCaptor.getValue();
+
+        assertEquals(EXPECTED_DIRECTION, actualDirection);
+    }
+
+    @Test
+    @DisplayName("Поворот меняет направление объекта")
+    void rotateCommandTest() {
+        when(rotable.getDirection()).thenReturn(START_DIRECTION);
+        when(rotable.getAngularVelocity()).thenReturn(START_ANGULAR_VELOCITY);
+
+        new RotateCommand(rotable).execute();
 
         Mockito.verify(rotable).setDirection(argumentCaptor.capture());
         Direction actualDirection = argumentCaptor.getValue();

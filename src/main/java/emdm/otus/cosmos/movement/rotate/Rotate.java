@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Rotate {
-    Rotable rotable;
+    protected Rotable rotable;
 
     public void execute() {
         rotable.setDirection(
