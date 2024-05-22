@@ -26,4 +26,20 @@ public class Vector {
         }
         return new Vector(resultData);
     }
+
+    public static Vector multiply(Vector a, double multiplier) {
+        List<Integer> resultData = new ArrayList<>(a.getData().size());
+        for (Integer value : a.getData()) {
+            resultData.add((int) Math.ceil(value * multiplier));
+        }
+        return new Vector(resultData);
+    }
+
+    public static double length(Vector a) {
+        int result = 0;
+        for (Integer value : a.getData()) {
+            result += value * value;
+        }
+        return Math.sqrt(result);
+    }
 }

@@ -1,10 +1,13 @@
 package emdm.otus.cosmos.movement.commands;
 
 import emdm.otus.cosmos.movement.exceptions.ExceptionHandler;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CommandQueue {
     private static final Deque<Command> queue = new ArrayDeque<>();
 
