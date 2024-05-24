@@ -100,7 +100,8 @@ class RepeatAndLogExceptionTest {
     void repeatTest() {
         Command repeatCommand = new RepeatCommand(throwCommand);
 
-        assertThrows(RuntimeException.class, repeatCommand::execute, EXCEPTION_MSG);
+        Exception exception = assertThrows(RuntimeException.class, repeatCommand::execute);
+        assertEquals(EXCEPTION_MSG, exception.getMessage());
 
         verify(throwCommand, times(1)).execute();
     }

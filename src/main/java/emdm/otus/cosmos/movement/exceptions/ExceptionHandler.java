@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
-@NoArgsConstructor(access=AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ExceptionHandler {
     private static final Table<String, String, BiFunction<Command, Exception, Command>> dictionary = HashBasedTable.create();
 
